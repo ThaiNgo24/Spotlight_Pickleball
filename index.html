@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotlight Pickleball | Sân Pickleball Cao Cấp Tại TP.HCM</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./images/logo.png"
+      sizes="192x192"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <style>
+      :root {
+        --yellow: #ffd700;
+        --white: #ffffff;
+        --green: #2e8b57;
+        --black: #333333;
+        --beige: #f5f5dc;
+        --gray: #f0f0f0;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        color: var(--black);
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 0;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 10px 0;
+        background-color: rgba(255, 255, 255, 0.95);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--green);
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        color: var(--yellow);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--black);
+        font-weight: 600;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--green);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--yellow);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--black);
+      }
+
+      /* Mobile Sidebar Menu */
+      .sidebar-menu {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100%;
+        background-color: var(--white);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+      }
+
+      .sidebar-menu.active {
+        left: 0;
+      }
+
+      .sidebar-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--gray);
+      }
+
+      .sidebar-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--green);
+      }
+
+      .close-sidebar {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--black);
+      }
+
+      .sidebar-links {
+        padding: 20px;
+        list-style: none;
+      }
+
+      .sidebar-links li {
+        margin-bottom: 15px;
+      }
+
+      .sidebar-links a {
+        text-decoration: none;
+        color: var(--black);
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      .sidebar-links a:hover {
+        background-color: var(--gray);
+        color: var(--green);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+          url("./images/thumbnail-1.jpg") no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at var(--x) var(--y),
+          rgba(255, 215, 0, 0.2) 0%,
+          transparent 20%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        margin-bottom: 20px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: var(--yellow);
+        color: var(--black);
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid var(--white);
+        color: var(--white);
+        margin-left: 15px;
+        box-shadow: none;
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* About Section */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--green);
+        display: inline-block;
+      }
+
+      .section-title h2::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background-color: var(--yellow);
+        margin: 15px auto;
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--black);
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background-color: var(--gray);
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--green);
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--black);
+      }
+
+      .quote {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: var(--beige);
+        border-left: 4px solid var(--yellow);
+        font-style: italic;
+      }
+
+      .quote-author {
+        margin-top: 10px;
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s;
+      }
+
+      .about-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Pickleball 101 Section */
+      .pickleball-101 {
+        background-color: var(--gray);
+      }
+
+      .facts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .fact-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .fact-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .fact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: var(--yellow);
+      }
+
+      .fact-icon {
+        font-size: 2.5rem;
+        color: var(--green);
+        margin-bottom: 20px;
+      }
+
+      .fact-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--black);
+      }
+
+      .fact-card p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .fun-fact {
+        background-color: var(--beige);
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        display: inline-block;
+        font-weight: 600;
+      }
+
+      /* Events Section with Swiper */
+      .events-section {
+        background-color: var(--white);
+        padding: 80px 0;
+      }
+
+      .events-swiper {
+        width: 100%;
+        padding: 30px 0 60px;
+        position: relative;
+      }
+
+      .event-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        max-width: 350px;
+        margin: 0 auto;
+        transition: transform 0.3s;
+      }
+
+      .event-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .event-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .event-card:hover .event-image img {
+        transform: scale(1.1);
+      }
+
+      .event-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .event-date {
+        display: inline-block;
+        background-color: var(--yellow);
+        color: var(--black);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .event-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--green);
+      }
+
+      .event-description {
+        margin-bottom: 15px;
+      }
+
+      .event-cta {
+        margin-top: 15px;
+      }
+
+      .autoplay-progress {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        z-index: 10;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: var(--yellow);
+      }
+
+      .autoplay-progress svg {
+        --progress: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        stroke-width: 4px;
+        stroke: var(--yellow);
+        fill: none;
+        stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+        stroke-dasharray: 125.6;
+        transform: rotate(-90deg);
+      }
+
+      /* Spotlight Moments Section */
+      .moments-section {
+        padding: 80px 0;
+      }
+
+      /* Desktop Gallery */
+      .gallery-filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 8px 20px;
+        background-color: var(--gray);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background-color: var(--yellow);
+        color: var(--black);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        aspect-ratio: 1/1;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: var(--white);
+        transform: translateY(100%);
+        transition: transform 0.3s;
+      }
+
+      .gallery-item:hover .gallery-info {
+        transform: translateY(0);
+      }
+
+      .gallery-info h3 {
+        margin-bottom: 5px;
+      }
+
+      .gallery-info p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .gallery-emoji {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .gallery-item:hover .gallery-emoji {
+        opacity: 1;
+      }
+
+      /* Mobile Swiper for Moments (hidden on desktop) */
+      .moments-swiper-mobile {
+        display: none;
+        padding: 30px 0 60px;
+      }
+
+      .moments-swiper-mobile .swiper-slide {
+        width: 80%;
+        height: 300px;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .moments-swiper-mobile .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .moments-swiper-mobile .gallery-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: var(--white);
+      }
+
+      .moments-swiper-mobile .swiper-pagination-progressbar {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .moments-swiper-mobile .swiper-pagination-progressbar-fill {
+        background: var(--yellow);
+      }
+
+      /* Contact Section */
+      .contact {
+        background-color: var(--beige);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+      }
+
+      .booking-section {
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .booking-section h3 {
+        margin-bottom: 20px;
+        color: var(--green);
+      }
+
+      .booking-options {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .booking-option {
+        background-color: var(--gray);
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+
+      .booking-option:hover {
+        transform: translateY(-5px);
+      }
+
+      .booking-option h4 {
+        color: var(--green);
+        margin-bottom: 10px;
+      }
+
+      .booking-option p {
+        margin-bottom: 15px;
+      }
+
+      .app-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .app-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 15px;
+        background-color: var(--black);
+        color: var(--white);
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .app-button:hover {
+        background-color: var(--green);
+        transform: translateY(-3px);
+      }
+
+      .app-button i {
+        margin-right: 8px;
+        font-size: 1.2rem;
+      }
+
+      .map-container {
+        height: 300px;
+        margin-top: 30px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: var(--yellow);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--yellow);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--yellow);
+        color: var(--black);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-image {
+          order: -1;
+          margin-bottom: 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          height: auto;
+          padding: 150px 0 100px;
+        }
+
+        .btn-secondary {
+          margin-left: 0;
+          margin-top: 15px;
+          display: block;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        /* Hide desktop gallery on mobile */
+        .gallery-grid {
+          display: none;
+        }
+
+        /* Hide filter buttons on mobile */
+        .gallery-filter {
+          display: none;
+        }
+
+        /* Show mobile swiper */
+        .moments-swiper-mobile {
+          display: block;
+        }
+
+        .app-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .section {
+          padding: 70px 0;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .moments-swiper-mobile .swiper-slide {
+          width: 85%;
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">
+            <i class="fas fa-table-tennis-paddle-ball"></i>
+            <span>Spotlight Pickleball</span>
+          </a>
+
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Trang Chủ</a></li>
+            <li><a href="#about">Giới Thiệu</a></li>
+            <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
+            <li><a href="#events">Sự Kiện</a></li>
+            <li><a href="#moments">Khoảnh Khắc</a></li>
+            <li><a href="#contact">Đặt Sân</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <i class="fas fa-table-tennis-paddle-ball"></i> Spotlight Pickleball
+        </div>
+        <button class="close-sidebar" id="closeSidebar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="sidebar-links">
+        <li><a href="#home">Trang Chủ</a></li>
+        <li><a href="#about">Giới Thiệu</a></li>
+        <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
+        <li><a href="#events">Sự Kiện</a></li>
+        <li><a href="#moments">Khoảnh Khắc</a></li>
+        <li><a href="#contact">Đặt Sân</a></li>
+      </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            Nơi Trò Chơi Tỏa Sáng <br />
+            <span style="color: var(--yellow)">Spotlight Pickleball</span>
+          </h1>
+          <p>
+            Địa điểm chơi pickleball hàng đầu tại TP.HCM. Tham gia cộng đồng sôi
+            động của chúng tôi để rèn luyện sức khỏe, giải trí và thi đấu.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn">📅 Đặt Sân Ngay</a>
+            <a href="#contact" class="btn btn-secondary"
+              >🎾 Tham Gia Buổi Chơi</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Về Chúng Tôi</h2>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Kết nối mọi người thông qua thể thao và năng lượng</h3>
+            <p>
+              Spotlight Pickleball không chỉ là một địa điểm thể thao - đó là
+              trung tâm cộng đồng nơi người chơi ở mọi trình độ cùng nhau tận
+              hưởng môn thể thao phát triển nhanh nhất thế giới.
+            </p>
+            <p>
+              Cơ sở vật chất hiện đại của chúng tôi tại Thủ Đức mang đến môi
+              trường hoàn hảo cho cả giải trí và thi đấu, với sân chuyên nghiệp
+              và bầu không khí thân thiện.
+            </p>
+
+            <div class="stats">
+              <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Người Chơi Mỗi Tháng</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Ngày Mở Cửa/Tuần</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Sân Thi Đấu Chuyên Nghiệp</div>
+              </div>
+            </div>
+
+            <div class="quote">
+              <p>
+                "Pickleball có cách kỳ diệu để kết nối mọi người. Tại Spotlight,
+                chúng tôi tạo ra một không gian nơi thi đấu gặp gỡ cộng đồng,
+                nơi mọi người chơi - từ người mới đến chuyên nghiệp - đều cảm
+                thấy như ở nhà."
+              </p>
+              <div class="quote-author">- Ngô Thanh Tú, Người Sáng Lập</div>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img
+              src="./images/thumbnail-2.JPG"
+              alt="Sân Pickleball tại Spotlight"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pickleball 101 Section -->
+    <section class="section pickleball-101" id="pickleball-101">
+      <div class="container">
+        <div class="section-title">
+          <h2>Pickleball Là Gì?</h2>
+        </div>
+
+        <div class="facts-container">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <h3>Pickleball là gì?</h3>
+            <p>
+              Môn thể thao dùng vợt kết hợp giữa tennis, cầu lông và bóng bàn.
+              Chơi trên sân cỡ cầu lông với lưới tennis điều chỉnh, sử dụng vợt
+              và bóng nhựa có lỗ.
+            </p>
+            <div class="fun-fact">
+              Fun Fact: Được đặt tên theo chú chó Pickles của người sáng lập!
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Tại sao phát triển nhanh?</h3>
+            <p>
+              Dễ học nhưng khó để thành thạo, phù hợp với mọi lứa tuổi và trình
+              độ. Mang tính xã hội, ít tác động và là bài tập thể dục tuyệt vời.
+            </p>
+            <div class="fun-fact">
+              Môn thể thao phát triển nhanh nhất ở Mỹ từ 2019!
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3>Lợi ích sức khỏe</h3>
+            <p>
+              Cải thiện sức khỏe tim mạch, tăng phản xạ và phối hợp, xây dựng
+              sức mạnh cơ bắp và đốt calo (300-500 mỗi giờ). Bài tập toàn thân
+              hoàn hảo, ít tác động lên khớp.
+            </p>
+            <div class="fun-fact">
+              Người chơi báo cáo tâm trạng và kết nối xã hội tốt hơn!
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-history"></i>
+            </div>
+            <h3>Lịch sử & Sự thật</h3>
+            <p>
+              Được phát minh năm 1965 tại đảo Bainbridge, Washington. Môn thể
+              thao đã phát triển hơn 650% trong thập kỷ qua. Các giải đấu chuyên
+              nghiệp hiện có giải thưởng lên tới 6 con số.
+            </p>
+            <div class="fun-fact">
+              Hơn 4.8 triệu người chơi chỉ riêng tại Mỹ!
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Phù hợp mọi lứa tuổi</h3>
+            <p>
+              Từ trẻ em đến người cao tuổi, pickleball thực sự dành cho tất cả.
+              Kích thước sân nhỏ giảm yêu cầu di chuyển nhưng vẫn giữ được sự
+              hấp dẫn thi đấu. Tuyệt vời cho gia đình và chơi đa thế hệ.
+            </p>
+            <div class="fun-fact">
+              Độ tuổi trung bình của người chơi đang giảm nhanh!
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3>Bắt đầu như thế nào?</h3>
+            <p>
+              Tất cả những gì bạn cần là trang phục thể thao thoải mái và giày
+              sân. Chúng tôi cung cấp vợt và bóng miễn phí cho mọi người chơi!
+              Tham gia các buổi giới thiệu của chúng tôi vào sáng thứ Bảy hàng
+              tuần - không cần kinh nghiệm.
+            </p>
+            <div class="fun-fact">
+              Hầu hết người mới có thể đánh bóng qua lại trong vòng 30 phút!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section with Swiper -->
+    <section class="section events-section" id="events">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sự Kiện Sắp Tới</h2>
+        </div>
+
+        <div class="swiper events-swiper">
+          <div class="swiper-wrapper">
+            <!-- Event 1 -->
+            <div class="swiper-slide">
+              <div class="event-card">
+                <div class="event-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1493&q=80"
+                    alt="Giải đấu mùa hè"
+                  />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">15/08/2023</span>
+                  <h3 class="event-title">Giải Vô Địch Mùa Hè</h3>
+                  <p class="event-description">
+                    Giải đấu thường niên dành cho mọi lứa tuổi. Giải thưởng hấp
+                    dẫn và nhiều hạng mục thi đấu.
+                  </p>
+                  <a href="#contact" class="btn event-cta">Đăng Ký Ngay</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="swiper-slide">
+              <div class="event-card">
+                <div class="event-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Ngày hội gia đình"
+                  />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">20/08/2023</span>
+                  <h3 class="event-title">Ngày Hội Gia Đình</h3>
+                  <p class="event-description">
+                    Hoạt động vui chơi cho cả gia đình, thi đấu đôi cha mẹ - con
+                    cái và nhiều trò chơi thú vị.
+                  </p>
+                  <a href="#contact" class="btn event-cta">Tham Gia</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="swiper-slide">
+              <div class="event-card">
+                <div class="event-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Khóa học cho người mới"
+                  />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">Mỗi thứ 7 hàng tuần</span>
+                  <h3 class="event-title">Khóa Học Cho Người Mới</h3>
+                  <p class="event-description">
+                    Hướng dẫn từ cơ bản đến nâng cao bởi HLV chuyên nghiệp. Miễn
+                    phí vợt cho buổi đầu tiên.
+                  </p>
+                  <a href="#contact" class="btn event-cta">Đăng Ký Học</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="swiper-slide">
+              <div class="event-card">
+                <div class="event-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Giải đấu đôi"
+                  />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">05/09/2023</span>
+                  <h3 class="event-title">Giải Đấu Đôi</h3>
+                  <p class="event-description">
+                    Thi đấu đôi nam nữ với nhiều giải thưởng hấp dẫn. Phù hợp
+                    cho các cặp đôi yêu thể thao.
+                  </p>
+                  <a href="#contact" class="btn event-cta">Đăng Ký Đội</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="swiper-slide">
+              <div class="event-card">
+                <div class="event-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Đêm pickleball"
+                  />
+                </div>
+                <div class="event-content">
+                  <span class="event-date">Mỗi thứ 6 hàng tuần</span>
+                  <h3 class="event-title">Đêm Pickleball</h3>
+                  <p class="event-description">
+                    Trải nghiệm pickleball dưới ánh đèn với âm nhạc sôi động.
+                    Thức uống miễn phí cho người tham gia.
+                  </p>
+                  <a href="#contact" class="btn event-cta">Tham Gia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Autoplay progress -->
+          <div class="autoplay-progress" slot="container-end">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span></span>
+          </div>
+
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spotlight Moments Section -->
+    <section class="section moments-section" id="moments">
+      <div class="container">
+        <div class="section-title">
+          <h2>Khoảnh Khắc Đáng Nhớ</h2>
+        </div>
+
+        <!-- Desktop Gallery with Filter -->
+        <div class="gallery-filter">
+          <button class="filter-btn active" data-filter="all">Tất Cả</button>
+          <button class="filter-btn" data-filter="community">Cộng Đồng</button>
+          <button class="filter-btn" data-filter="session">Buổi Chơi</button>
+          <button class="filter-btn" data-filter="event">Sự Kiện</button>
+          <button class="filter-btn" data-filter="training">Đào Tạo</button>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="community">
+            <img src="./images/community-1.jpg" alt="Cộng đồng thân thiện" />
+            <div class="gallery-info">
+              <h3>Cộng đồng thân thiện</h3>
+              <p>Cùng nhau chia sẻ kinh nghiệm</p>
+            </div>
+            <div class="gallery-emoji">💬</div>
+          </div>
+
+          <div class="gallery-item" data-category="session">
+            <img src="./images/session-1.jpg" alt="Buổi chơi đêm" />
+            <div class="gallery-info">
+              <h3>Dụng cụ miễn phí!</h3>
+              <p>Miễn phí sử dụng vợt và bóng</p>
+            </div>
+            <div class="gallery-emoji">🏓</div>
+          </div>
+
+          <div class="gallery-item" data-category="event">
+            <img
+              src="./images/su-kien-thieu-nhi-1.jpg"
+              alt="Ngày hội gia đình"
+            />
+            <div class="gallery-info">
+              <h3>Ngày Gia Đình</h3>
+              <p>Sự kiện cộng đồng hàng tháng</p>
+            </div>
+            <div class="gallery-emoji">👨‍👩‍👧‍👦</div>
+          </div>
+
+          <div class="gallery-item" data-category="event">
+            <img
+              src="./images/su-kien-thieu-nhi-2.jpg"
+              alt="Ngày hội gia đình"
+            />
+            <div class="gallery-info">
+              <h3>Ngày Gia Đình</h3>
+              <p>Sự kiện cộng đồng hàng tháng</p>
+            </div>
+            <div class="gallery-emoji">👨‍👩‍👧‍👦</div>
+          </div>
+
+          <div class="gallery-item" data-category="session">
+            <img src="./images/session-2.JPG" alt="Thi đấu đôi" />
+            <div class="gallery-info">
+              <h3>Giải Đấu Đôi</h3>
+              <p>Những pha bóng đôi kịch tính</p>
+            </div>
+            <div class="gallery-emoji">🎯</div>
+          </div>
+
+          <div class="gallery-item" data-category="training">
+            <img src="./images/training-1.JPG" alt="Buổi học cho người mới" />
+            <div class="gallery-info">
+              <h3>Buổi Cho Người Mới</h3>
+              <p>Học những kỹ thuật cơ bản</p>
+            </div>
+            <div class="gallery-emoji">👋</div>
+          </div>
+        </div>
+
+        <!-- Mobile Swiper (hidden on desktop) -->
+        <div class="swiper moments-swiper-mobile">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./images/session-2.JPG" alt="Giải Đấu Đôi" />
+              <div class="gallery-info">
+                <h3>Giải Đấu Đôi 🎯</h3>
+                <p>Những pha bóng đôi kịch tính</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/session-1.jpg" alt="Dụng cụ miễn phí" />
+              <div class="gallery-info">
+                <h3>Dụng cụ miễn phí! 🏓</h3>
+                <p>Miễn phí sử dụng vợt và bóng</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/training-1.JPG" alt="Buổi Cho Người Mới" />
+              <div class="gallery-info">
+                <h3>Buổi Cho Người Mới 👋</h3>
+                <p>Học những kỹ thuật cơ bản</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/community-1.jpg" alt="Cộng đồng thân thiện" />
+              <div class="gallery-info">
+                <h3>Cộng đồng thân thiện 💬</h3>
+                <p>Cùng nhau chia sẻ kinh nghiệm</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/community-2.jpg" alt="Cộng đồng thân thiện" />
+              <div class="gallery-info">
+                <h3>Cộng đồng thân thiện 💬</h3>
+                <p>Cùng nhau chia sẻ kinh nghiệm</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img
+                src="./images/su-kien-thieu-nhi-1.jpg"
+                alt="Ngày hội gia đình"
+              />
+              <div class="gallery-info">
+                <h3>Ngày hội gia đình 👨‍👩‍👧‍👦</h3>
+                <p>Sự kiện cộng đồng hàng tháng</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <img
+                src="./images/su-kien-thieu-nhi-2.jpg"
+                alt="Ngày hội gia đình"
+              />
+              <div class="gallery-info">
+                <h3>Ngày hội gia đình 👨‍👩‍👧‍👦</h3>
+                <p>Sự kiện cộng đồng hàng tháng</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progressbar pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Đặt Sân Pickleball</h2>
+        </div>
+
+        <div class="contact-container">
+          <div class="booking-section">
+            <h3>Đặt Sân Qua Ứng Dụng ALOBO</h3>
+            <p>
+              Để thuận tiện cho việc đặt sân và quản lý, chúng tôi sử dụng nền
+              tảng đặt sân thông minh ALOBO (ALO Booking).
+            </p>
+
+            <br />
+
+            <div class="booking-options">
+              <div class="booking-option">
+                <h4>Đặt Sân Ngay Trên Web</h4>
+                <p>
+                  Truy cập hệ thống đặt sân trực tuyến của ALOBO để chọn giờ và
+                  thanh toán ngay lập tức.
+                </p>
+                <a href="https://datlich.alobo.vn/" class="btn" target="_blank"
+                  >Đặt Sân Online</a
+                >
+              </div>
+
+              <br />
+
+              <div class="booking-option">
+                <h4>Tải Ứng Dụng Di Động</h4>
+                <p>
+                  Trải nghiệm đặt sân tiện lợi hơn với ứng dụng ALOBO trên điện
+                  thoại di động.
+                </p>
+                <div class="app-buttons">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.alobo.sportUser"
+                    class="app-button"
+                    target="_blank"
+                  >
+                    <i class="fab fa-google-play"></i> CH Play
+                  </a>
+                  <a
+                    href="https://apps.apple.com/vn/app/alobo-t%C3%ACm-ki%E1%BA%BFm-v%C3%A0-%C4%91%E1%BA%B7t-l%E1%BB%8Bch/id6479625228?l=vi"
+                    class="app-button"
+                    target="_blank"
+                  >
+                    <i class="fab fa-apple"></i> App Store
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <h3>Thông Tin Liên Hệ</h3>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Địa Chỉ</h4>
+                <p>
+                  22 Bát Nàn, Phường Bình Trưng Tây, Thủ Đức, Hồ Chí Minh, Việt
+                  Nam
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>Email</h4>
+                <p>spotlight122024@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-content">
+                <h4>Điện Thoại</h4>
+                <p>0923 136 768</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-content">
+                <h4>Giờ Mở Cửa</h4>
+                <p>Thứ 2 - Chủ Nhật: 6:00 - 23:00</p>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3962406652618!2d106.75052241138312!3d10.780933359064678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525000b816907%3A0x1545e61778be787!2sSPOTLIGHT%20PICKLEBALL%20CLUB!5e0!3m2!1svi!2s!4v1754304100456!5m2!1svi!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Spotlight Pickleball</h3>
+            <p>
+              Địa điểm pickleball hàng đầu Việt Nam tại TP.HCM, kết nối cộng
+              đồng, thi đấu và giải trí.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/people/S%C3%A2n-Pickleball-Spotlight/61551709631263/"
+                target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/spotlightpickleball/"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+              <a
+                href="https://www.tiktok.com/@spotlight.pickleball?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Liên Kết Nhanh</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Trang Chủ</a></li>
+              <li><a href="#about">Giới Thiệu</a></li>
+              <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
+              <li><a href="#events">Sự Kiện</a></li>
+              <li><a href="#moments">Khoảnh Khắc</a></li>
+              <li><a href="#contact">Đặt Sân</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Dịch Vụ</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="https://datlich.alobo.vn/" target="_blank"
+                  >Đặt Sân Online</a
+                >
+              </li>
+              <li><a href="#">Buổi Chơi Nhóm</a></li>
+              <li><a href="#">Huấn Luyện Riêng</a></li>
+              <li><a href="#">Giải Đấu</a></li>
+              <li><a href="#">Sự Kiện Doanh Nghiệp</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Spotlight Pickleball. Bảo lưu mọi quyền.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const closeSidebar = document.getElementById("closeSidebar");
+      const overlay = document.getElementById("overlay");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        sidebarMenu.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      closeSidebar.addEventListener("click", () => {
+        sidebarMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebarMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      });
+
+      // Close sidebar when clicking a link
+      document.querySelectorAll(".sidebar-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          sidebarMenu.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animate stats counter
+      const statNumber = document.querySelector(".stat-number[data-count]");
+      if (statNumber) {
+        const target = parseInt(statNumber.getAttribute("data-count"));
+        const duration = 2000; // Animation duration in ms
+        const step = target / (duration / 16); // 60fps
+
+        let current = 0;
+        const counter = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            clearInterval(counter);
+            current = target;
+          }
+          statNumber.textContent = Math.floor(current);
+        }, 16);
+      }
+
+      // Gallery filter for desktop
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Update active button
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+
+          // Filter items
+          galleryItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Initialize Events Swiper with autoplay progress
+      const eventsSwiper = new Swiper(".events-swiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: false,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        on: {
+          autoplayTimeLeft(s, time, progress) {
+            const progressCircle = document.querySelector(
+              ".autoplay-progress svg"
+            );
+            const progressContent = document.querySelector(
+              ".autoplay-progress span"
+            );
+            progressCircle.style.setProperty("--progress", 1 - progress);
+            progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+          },
+        },
+      });
+
+      // Initialize Moments Swiper for mobile only
+      const momentsSwiperMobile = new Swiper(".moments-swiper-mobile", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        centeredSlides: false,
+        loop: false,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "progressbar",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1.2,
+            spaceBetween: 15,
+          },
+          480: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2.5,
+            spaceBetween: 25,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
