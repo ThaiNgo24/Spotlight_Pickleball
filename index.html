@@ -578,6 +578,89 @@
         transform: rotate(-90deg);
       }
 
+      /* Video Gallery Section */
+      .video-gallery {
+        padding: 80px 0;
+        background-color: var(--white);
+      }
+
+      .video-swiper {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px 0 50px;
+      }
+
+      .video-swiper .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        background: var(--black);
+      }
+
+      .video-swiper .swiper-slide video {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        display: block;
+        border-radius: 12px;
+      }
+
+      .video-title-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 10;
+        text-align: center;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+        transition: opacity 0.5s ease;
+      }
+
+      .video-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        margin: 0;
+      }
+
+      .video-swiper .swiper-pagination {
+        bottom: 20px;
+      }
+
+      .video-swiper .swiper-pagination-bullet {
+        background: var(--gray);
+        opacity: 1;
+      }
+
+      .video-swiper .swiper-pagination-bullet-active {
+        background: var(--yellow);
+      }
+
+      .video-swiper .swiper-button-next,
+      .video-swiper .swiper-button-prev {
+        color: var(--yellow);
+        background: rgba(0, 0, 0, 0.3);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+      }
+
+      .video-swiper .swiper-button-next::after,
+      .video-swiper .swiper-button-prev::after {
+        font-size: 1.2rem;
+      }
+
       /* Spotlight Moments Section */
       .moments-section {
         padding: 80px 0;
@@ -926,6 +1009,19 @@
           flex-direction: column;
           align-items: center;
         }
+
+        .video-swiper {
+          padding: 20px 0 40px;
+        }
+
+        .video-swiper .swiper-button-next,
+        .video-swiper .swiper-button-prev {
+          display: none;
+        }
+
+        .video-title {
+          font-size: 1.2rem;
+        }
       }
 
       @media (max-width: 576px) {
@@ -940,6 +1036,11 @@
         .moments-swiper-mobile .swiper-slide {
           width: 85%;
           height: 250px;
+        }
+
+        .video-swiper .swiper-slide video {
+          width: 100%;
+          height: auto;
         }
       }
     </style>
@@ -963,6 +1064,7 @@
             <li><a href="#about">Giới Thiệu</a></li>
             <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
             <li><a href="#events">Sự Kiện</a></li>
+            <li><a href="#videos">Video</a></li>
             <li><a href="#moments">Khoảnh Khắc</a></li>
             <li><a href="#contact">Đặt Sân</a></li>
           </ul>
@@ -985,6 +1087,7 @@
         <li><a href="#about">Giới Thiệu</a></li>
         <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
         <li><a href="#events">Sự Kiện</a></li>
+        <li><a href="#videos">Video</a></li>
         <li><a href="#moments">Khoảnh Khắc</a></li>
         <li><a href="#contact">Đặt Sân</a></li>
       </ul>
@@ -1301,6 +1404,70 @@
       </div>
     </section>
 
+    <!-- Video Gallery Section -->
+    <section class="section video-gallery" id="videos">
+      <div class="container">
+        <div class="section-title">
+          <h2>Video Nổi Bật</h2>
+        </div>
+
+        <div class="swiper video-swiper">
+          <div class="swiper-wrapper">
+            <!-- Video 1 -->
+            <div class="swiper-slide">
+              <div class="video-title-container">
+                <h3 class="video-title">Giải đấu Spotlight Mùa Hè 2023</h3>
+              </div>
+              <video controls autoplay loop>
+                <source src="./videos/video-1.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+              </video>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="swiper-slide">
+              <div class="video-title-container">
+                <h3 class="video-title">Buổi tập luyện nhóm</h3>
+              </div>
+              <video controls autoplay loop>
+                <source src="./videos/video-2.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+              </video>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="swiper-slide">
+              <div class="video-title-container">
+                <h3 class="video-title">Ngày hội gia đình</h3>
+              </div>
+              <video controls autoplay loop>
+                <source src="./videos/video-3.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+              </video>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="swiper-slide">
+              <div class="video-title-container">
+                <h3 class="video-title">Hướng dẫn kỹ thuật cơ bản</h3>
+              </div>
+              <video controls autoplay loop>
+                <source src="./videos/video-4.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ video.
+              </video>
+            </div>
+          </div>
+
+          <!-- Navigation buttons -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Spotlight Moments Section -->
     <section class="section moments-section" id="moments">
       <div class="container">
@@ -1607,6 +1774,7 @@
               <li><a href="#about">Giới Thiệu</a></li>
               <li><a href="#pickleball-101">Pickleball Là Gì?</a></li>
               <li><a href="#events">Sự Kiện</a></li>
+              <li><a href="#videos">Video</a></li>
               <li><a href="#moments">Khoảnh Khắc</a></li>
               <li><a href="#contact">Đặt Sân</a></li>
             </ul>
@@ -1770,6 +1938,104 @@
           },
         },
       });
+
+      // Initialize Video Swiper with custom video handling
+      const videoSwiper = new Swiper(".video-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+        autoplay: false, // Disable Swiper's autoplay
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1.5,
+          },
+        },
+      });
+
+      // Video handling logic
+      const videoSection = document.getElementById("videos");
+      const videos = document.querySelectorAll(".video-swiper video");
+      let isVideoSectionVisible = false;
+
+      // Function to check if element is in viewport
+      function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+          rect.top <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.bottom >= 0
+        );
+      }
+
+      // Function to handle video playback
+      function handleVideoPlayback() {
+        const isNowVisible = isInViewport(videoSection);
+
+        if (isNowVisible && !isVideoSectionVisible) {
+          // Section just became visible
+          isVideoSectionVisible = true;
+          const activeSlide = videoSwiper.slides[videoSwiper.activeIndex];
+          const activeVideo = activeSlide.querySelector("video");
+
+          // Reset and play the active video
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          if (activeVideo) {
+            activeVideo.play().catch((e) => console.log(e));
+          }
+        } else if (!isNowVisible && isVideoSectionVisible) {
+          // Section just became invisible
+          isVideoSectionVisible = false;
+          videos.forEach((video) => {
+            video.pause();
+          });
+        }
+      }
+
+      // Listen for video ended event to move to next slide
+      videos.forEach((video) => {
+        video.addEventListener("ended", function () {
+          if (isVideoSectionVisible) {
+            videoSwiper.slideNext();
+          }
+        });
+      });
+
+      // When slide changes, play the new video
+      videoSwiper.on("slideChange", function () {
+        if (isVideoSectionVisible) {
+          const activeSlide = videoSwiper.slides[videoSwiper.activeIndex];
+          const activeVideo = activeSlide.querySelector("video");
+
+          // Pause all videos
+          videos.forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+          });
+
+          // Play the new active video
+          if (activeVideo) {
+            activeVideo.play().catch((e) => console.log(e));
+          }
+        }
+      });
+
+      // Check visibility on scroll
+      window.addEventListener("scroll", handleVideoPlayback);
+      // Also check on load
+      document.addEventListener("DOMContentLoaded", handleVideoPlayback);
 
       // Initialize Moments Swiper for mobile only
       const momentsSwiperMobile = new Swiper(".moments-swiper-mobile", {
